@@ -6,8 +6,8 @@ namespace DateMe.Controllers
 {
     public class HomeController : Controller
     {
-        private DatingApplicationContext _context;
-        public HomeController(DatingApplicationContext temp) 
+        private MovieFormContext _context;
+        public HomeController(MovieFormContext temp) 
         {
             _context = temp;
         }
@@ -17,18 +17,24 @@ namespace DateMe.Controllers
         }
 
         [HttpGet]
-        public IActionResult DatingApplication()
+        public IActionResult MovieForm()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult DatingApplication(Application response)
+        public IActionResult MovieForm(Application response)
         {
             _context.Applications.Add(response); // Add record to the database
             _context.SaveChanges();
 
             return View("Confirmation", response);
+        }
+        
+        // Get to know Joel Page
+        public IActionResult KnowJoel() 
+        {
+            return View();
         }
     }
 }

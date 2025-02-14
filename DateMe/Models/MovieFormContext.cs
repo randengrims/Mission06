@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DateMe.Models
 {
-    public class DatingApplicationContext : DbContext
+    public class MovieFormContext : DbContext
     {
-        public DatingApplicationContext(DbContextOptions<DatingApplicationContext> options) : base (options) // Contructor
+        public MovieFormContext(DbContextOptions<MovieFormContext> options) : base (options) // Contructor
         {
         } 
 

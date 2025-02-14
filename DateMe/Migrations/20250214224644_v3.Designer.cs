@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DateMe.Migrations
 {
-    [DbContext(typeof(DatingApplicationContext))]
-    [Migration("20250213182347_Initial5")]
-    partial class Initial5
+    [DbContext(typeof(MovieFormContext))]
+    [Migration("20250214224644_v3")]
+    partial class v3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,37 +21,40 @@ namespace DateMe.Migrations
 
             modelBuilder.Entity("DateMe.Models.Application", b =>
                 {
-                    b.Property<int>("ApplicationID")
+                    b.Property<int>("MovieID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Age")
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Director")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool?>("Edited")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("CreeperStalker")
+                    b.Property<string>("LentTo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(25)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Rating")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Year")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Major")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Occupation")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ApplicationID");
+                    b.HasKey("MovieID");
 
                     b.ToTable("Applications");
                 });

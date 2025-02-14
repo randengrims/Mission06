@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DatingApplicationContext>(options => 
+builder.Services.AddDbContext<MovieFormContext>(options => 
     {
     options.UseSqlite(builder.Configuration["ConnectionStrings:DatingConnection"]);
     });
