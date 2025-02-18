@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using DateMe.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 
 namespace DateMe.Controllers
 {
@@ -35,6 +37,15 @@ namespace DateMe.Controllers
         public IActionResult KnowJoel() 
         {
             return View();
+        }
+
+        public IActionResult Waitlist()
+        {
+            var applications = _context.Applications
+                .Where(x => x.Edited == false)
+                .OrderBy(x => x.Title).ToList();
+
+            return View(applications);
         }
     }
 }
