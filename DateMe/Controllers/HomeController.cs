@@ -47,5 +47,41 @@ namespace DateMe.Controllers
 
             return View(applications);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _context.Applications
+                .Single(x => x.MovieId == id);
+
+            return View("MovieForm", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Application updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("Waitlist");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _context.Applications
+                .Single(x => x.MovieId == id);
+
+            return View("DeleteView", recordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Application application)
+        {
+            _context.Applications.Remove(application);
+            _context.SaveChanges();
+
+            return RedirectToAction("Waitlist");
+        }
     }
 }

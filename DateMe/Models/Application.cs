@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DateMe.Models
 {
@@ -6,7 +7,7 @@ namespace DateMe.Models
     {
         [Key]
         [Required]
-        public int MovieID { get; set; }
+        public int MovieId { get; set; }
 
         [Required(ErrorMessage = "Category is required.")]
         public string Category { get; set; }
